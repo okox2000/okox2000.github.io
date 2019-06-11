@@ -1,10 +1,38 @@
 <!DOCTYPE HTML>
 <html>
-
+  <div>
+    <input id="a" type="number">
+    <input id="b" type="number">
+    <input id="c" type="number">
+    <input id="d" type="number">
+    <input id="show" type="button" value="Click!" onclick="show()" /><br />
+    <div id="result"> </div>
 <body>
 
   <script src="js/card.js"></script>
-  <p>...After the script.</p>
+  <script>
+    function show() {
+        document.getElementById("result").innerHTML = '';
+        let a = Number(document.getElementById("a").value);
+        let b = Number(document.getElementById("b").value);
+        let c = Number(document.getElementById("c").value);
+        let d = Number(document.getElementById("d").value);        
+        
+        let q = new Points(a,b,c,d);
+        q.CaculateAll(4);
+
+        if (q.solution === false) {
+           console.log("No solution");
+        }
+
+        for (var i in q.result){
+          //console.log(i,":",q.result[i]);
+          //document.getElementById("result").appendChild(document.createTextNode(q.result[i]));
+          document.getElementById("result").innerHTML += q.result[i] + "<br>";
+        }  
+    }
+  </script>
+
 
 </body>
 
